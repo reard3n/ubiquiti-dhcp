@@ -33,7 +33,7 @@ done < /tmp/bridges.txt
 
 #echo "The bridge that includes eth0 is $BREZ. The port number for eth0 is $PORTNOEZ."
 
-# dump the macs that are local on this bridge
+# dump the macs that are local on this bridge, and that have been seen on the eth0 interface
 brctl showmacs $BREZ | grep -v "yes" | awk '{ORS=""}{print $1}{print "|"}{print $2}{print "\n"}' | grep "$PORTNOEZ|" | awk -F"|" '{print $2}'
 
 echo "alldone"
